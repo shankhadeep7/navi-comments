@@ -1,0 +1,41 @@
+.commentSpan {
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+}
+
+.greyBox {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    width: auto;
+    height: 40px;
+    color: black;
+    margin: 5px 0 5px 0;
+    align-items: center;
+}
+
+.deleteButton {
+    border: 1px solid red;
+    border-radius: 5px;
+    background-color: white;
+    color: red;
+    margin: 0 5px 0 5px;
+}
+
+.replyButton {
+    border: 1px solid blue;
+    border-radius: 5px;
+    background-color: white;
+    color: blue;
+    margin: 0 5px 0 5px;
+}
+
+.replyInputContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.nested {
+    padding-left: 20px;
+}
