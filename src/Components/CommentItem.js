@@ -6,10 +6,17 @@ const CommentItem = ({comment, parentTree, setParentTree}) => {
 
     const [showReplyBox, setShowReplyBox] = useState(false);
     const [localCommentTree, setlocalCommentTree] = useState(comment?.children);
+    const [enableEditComment, setEnableEditComment] = useState(false);
+    const [editText, setEditText] = useState(comment.text);
     
     const addReplyToComment = (newComment) => {
         setlocalCommentTree(current => [...current, newComment ]);
         setShowReplyBox(false);
+    }
+
+    const editComment = () => {
+        comment.text = editText;
+        setEnableEditComment(false);
     }
  
     const deleteComment = (id) => {
@@ -20,20 +27,43 @@ const CommentItem = ({comment, parentTree, setParentTree}) => {
     return (
         <div>
             <div className="greyBox">
-                <p>
-                {comment.text}
-                </p>
-                <button 
-                className="deleteButton" 
-                onClick={() => deleteComment(comment.id)}
-                >
-                        Delete
-                </button>
-                <button className="replyButton" 
-                onClick={() => setShowReplyBox(true)}
-                >
-                    reply
-                </button>            
+                <div className="commentInfo">
+                    { enableEditComment ?
+                    <input type="text"
+                    value={editText}
+                    onChange={(e) => setEditText(e.target.value)}/>
+                    :
+                    <p>
+                    {comment.text}
+                    </p>}
+                    {
+                    enableEditComment ?
+                    <button onClick={() => editComment()}>
+                        Save
+                    </button> 
+                    :
+                    <div>
+                        <button 
+                        className="deleteButton" 
+                        onClick={() => deleteComment(comment.id)}
+                        >
+                                Delete
+                        </button>
+                        <button className="replyButton" 
+                        onClick={() => setShowReplyBox(true)}
+                        >
+                            Reply
+                        </button>
+                        <button className="editButton"
+                        onClick={() => setEnableEditComment(true)}>
+                            Edit
+                        </button>
+                    </div>
+                    }
+                </div>
+                <div className="timestamp">
+                    <p>{comment.timestamp}</p>
+                </div>            
             </div>
             { showReplyBox && <CommentReply onReply={addReplyToComment} showInput={setShowReplyBox}/>}
             { localCommentTree.length > 0 && 

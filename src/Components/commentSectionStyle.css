@@ -7,11 +7,20 @@
 .greyBox {
     display: flex;
     flex-direction: row;
-    padding: 5px;
+    padding: 15px;
     width: auto;
     height: 40px;
     color: black;
     margin: 5px 0 5px 0;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #D9DDDC;
+    border-radius: 20px;
+}
+
+.commentInfo {
+    display: flex;
+    flex-direction: row;
     align-items: center;
 }
 
@@ -29,6 +38,18 @@
     background-color: white;
     color: blue;
     margin: 0 5px 0 5px;
+}
+
+.editButton {
+    border: 1px solid blue;
+    border-radius: 5px;
+    background-color: white;
+    color: green;
+    margin: 0 5px 0 5px; 
+}
+
+.timestamp {
+    justify-content: flex-end;
 }
 
 .replyInputContainer {

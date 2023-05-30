@@ -3,10 +3,12 @@ import './commentSectionStyle.css';
 
 const CommentReply = ({ onReply, showInput, data}) => {
     const [replyText, setReplyText] = useState('');
+    const date = new Date();
     const addReply = () => {
         onReply({
             id: Math.random() * 1000,
             text: replyText,
+            timestamp: date.toUTCString(),
             children: []
         })
         setReplyText('');

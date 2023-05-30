@@ -6,12 +6,13 @@ const CommentWidget = () => {
 
     const [commentTree, setCommentTree] = useState([]);
     const [parentInput, setParentInput] = useState('');
-
+    const date = new Date();
     const addParentComment = () => {
         if( parentInput.length > 0 ) {
             let node = {
                 id : Math.random() * 1000,
                 text: parentInput,
+                timestamp: date.toUTCString(),
                 children: []
             }
             setCommentTree( current => [...current, node]);
